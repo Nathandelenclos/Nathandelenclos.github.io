@@ -5,8 +5,8 @@
     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
     It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
     software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-  <div class="description">
-    <img src="../assets/me.webp" alt="me" />
+  <section class="description">
+    <img src="@/assets/me.webp" alt="me" />
     <div class="right-part">
       <h3>Developer Full-stack</h3>
       <div class="elements">
@@ -15,7 +15,25 @@
         </p>
       </div>
     </div>
-  </div>
+  </section>
+  <section class="facts">
+    <h2>Facts</h2>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+      dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    <div class="statsFacts">
+      <stats v-for="stat in stats" :title="stat.title" :number="stat.number" />
+    </div>
+  </section>
+  <section class="skills">
+    <h2>Skills</h2>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+      dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    <div class="skillsBars">
+      <div v-for="(lang, key) in skills" class="skillBar">
+        <skills-bar  v-bind:percent="lang" v-bind:title="key"/>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -31,8 +49,17 @@ h3 {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
-.description {
+h2 {
+  color: var(--belge-first);
+  font-size: 42px;
+  font-weight: bold;
+}
+section {
+  transition: opacity 1s;
+  opacity: 0;
   margin-top: 2rem;
+}
+.description {
   display: flex;
   width: 100%;
 }
@@ -56,9 +83,31 @@ h3 {
 .elements > p > b {
   font-weight: bold;
 }
+.facts {
+  margin-top: 2rem;
+}
+.statsFacts {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+.skillsBars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.skillBar {
+  display: block;
+  width: 45%;
+  margin-bottom: 1rem;
+}
 </style>
 
 <script>
+import Stats from "@/components/stats.vue";
+import SkillsBar from "@/components/skillsBar.vue";
+import repos from "@/assets/repos.json";
+
 function getAge(dateString) {
   const today = new Date();
   const birthDate = new Date(dateString);
@@ -69,9 +118,71 @@ function getAge(dateString) {
   }
   return age;
 }
+function getTotalNumberLine(project) {
+  let numberOfLines = 0;
+  for (const lang in project.languages) {
+    numberOfLines += project.languages[lang];
+  }
+  return numberOfLines;
+}
+
+function getUniqueLanguage(repos) {
+  const languages = [];
+  repos.forEach((project) => {
+    for (const lang in project.languages) {
+      if (!languages.includes(lang)) {
+        languages.push(lang);
+      }
+    }
+  });
+  return languages;
+}
+
+function getSkillsPercent(repos) {
+  const languages = {};
+  let sum = 0;
+  repos.forEach((project) => {
+    for (const lang in project.languages) {
+      languages[lang] = languages[lang]
+        ? languages[lang] + project.languages[lang]
+        : project.languages[lang];
+      sum += project.languages[lang];
+    }
+  });
+  for (const lang in languages) {
+    languages[lang] = (100 * languages[lang]) / sum;
+    languages[lang] = languages[lang].toFixed(2);
+  }
+  console.log(languages);
+  return languages;
+}
 export default {
+  components: { SkillsBar, Stats },
   data() {
     return {
+      skills: getSkillsPercent(repos),
+      stats: [
+        {
+          title: "Projects",
+          number: repos.length,
+        },
+        {
+          title: "ligne de code",
+          number: repos.reduce((previous, actual) => {
+            return previous + getTotalNumberLine(actual);
+          }, 0),
+        },
+        {
+          title: "Language de programmation",
+          number: getUniqueLanguage(repos).length,
+        },
+        {
+          title: "Kb",
+          number: repos.reduce((previous, actual) => {
+            return previous + actual.size;
+          }, 0),
+        },
+      ],
       descriptions: [
         {
           title: "Birthday",
@@ -99,6 +210,15 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    let time = 100;
+    for (let section of document.getElementsByTagName("section")) {
+      setTimeout(() => {
+        section.style.opacity = "1";
+      }, time);
+      time += 250;
+    }
   },
 };
 </script>

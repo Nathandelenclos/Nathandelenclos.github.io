@@ -1,11 +1,66 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+<script lang="ts">
 import IconLinks from "@/components/icons/iconLinks.vue";
+export default {
+  name: "App",
+  components: {IconLinks},
+  methods: {
+    hiddenOrShow(event: any) {
+      const width = parseInt(document.getElementsByTagName('nav')[0]?.style.width)
+      if (width > 150 || isNaN(width)) {
+        this.hidden(event);
+      } else {
+        this.show(event);
+      }
+    },
+    show(event: any) {
+      const nav: HTMLElement = document.getElementsByTagName("nav")[0];
+      const main: HTMLElement = document.getElementsByTagName("main")[0];
+      let marginLeft = 150;
+
+      const interval = setInterval(() => {
+        main.style.marginLeft = marginLeft + "px";
+        nav.style.width = marginLeft - 50 + "px";
+        marginLeft++;
+        if (marginLeft > 300) {
+          clearInterval(interval);
+          for (let elementsByTagNameKey of nav.getElementsByTagName("p")) {
+            elementsByTagNameKey.className = "";
+          }
+          for (let elementsByTagNameKey of nav.getElementsByTagName("h1")) {
+            elementsByTagNameKey.className = "";
+          }
+        }
+      }, 1);
+      event.srcElement.style.transform = "rotate(0deg)";
+    },
+    hidden(event: any) {
+      const nav: HTMLElement = document.getElementsByTagName("nav")[0];
+      const main: HTMLElement = document.getElementsByTagName("main")[0];
+      let marginLeft = 300;
+      for (let elementsByTagNameKey of nav.getElementsByTagName("p")) {
+        console.log(Date.now())
+        elementsByTagNameKey.className += "hidden";
+      }
+      for (let elementsByTagNameKey of nav.getElementsByTagName("h1")) {
+        elementsByTagNameKey.className += "hidden";
+      }
+      const interval = setInterval(() => {
+        main.style.marginLeft = marginLeft + "px";
+        nav.style.width = marginLeft - 50 + "px";
+        marginLeft--;
+        if (marginLeft < 150) {
+          clearInterval(interval);
+        }
+      }, 1);
+      event.srcElement.style.transform = "rotate(180deg)";
+    },
+  },
+};
 </script>
 
 <template>
   <nav>
-    <img src="./assets/me.webp" alt="profile" id="profile" />
+    <img src="@/assets/me.webp" alt="profile" id="profile" />
     <h1>Nathan<br />Delenclos</h1>
     <div class="link">
       <icon-links
@@ -27,27 +82,32 @@ import IconLinks from "@/components/icons/iconLinks.vue";
     </div>
     <div class="navigation">
       <RouterLink to="/">
-        <img src="./assets/icons/icon_user.svg" alt="icon user"/>
-        About
+        <img src="@/assets/icons/icon_user.svg" alt="icon user" />
+        <p>About</p>
       </RouterLink>
       <RouterLink to="/resume">
-        <img src="./assets/icons/icon_file.svg" alt="icon user"/>
-        Resume
+        <img src="@/assets/icons/icon_file.svg" alt="icon user" />
+        <p>Resume</p>
       </RouterLink>
       <RouterLink to="/portfolio">
-        <img src="./assets/icons/icon_wallet.svg" alt="icon user" />
-        Portfolio
+        <img src="@/assets/icons/icon_wallet.svg" alt="icon user" />
+        <p>Portfolio</p>
       </RouterLink>
       <RouterLink to="/testimonials">
-        <img src="./assets/icons/icon_comment_bubble.svg" alt="icon user"/>
-        Testimonials
+        <img src="@/assets/icons/icon_comment_bubble.svg" alt="icon user" />
+        <p>Testimonials</p>
       </RouterLink>
       <RouterLink to="/contact">
-        <img src="./assets/icons/icon_send.svg" alt="icon send"/>
-        Contact
+        <img src="@/assets/icons/icon_send.svg" alt="icon send" />
+        <p>Contact</p>
       </RouterLink>
     </div>
-    <img src="./assets/icons/back.svg" alt="back" id="back" />
+    <img
+      src="@/assets/icons/back.svg"
+      alt="back"
+      id="back"
+      @click="hiddenOrShow"
+    />
   </nav>
 
   <main>
@@ -57,18 +117,21 @@ import IconLinks from "@/components/icons/iconLinks.vue";
 
 <style scoped>
 nav {
-  width: 600px;
+  width: 250px;
   height: 100%;
+  position: fixed;
   background-color: var(--blue);
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 nav > img {
   width: 70%;
   border-radius: 50%;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  transition: transform 0.8s;
 }
 nav > h1 {
   color: var(--belge-first);
@@ -103,10 +166,13 @@ a:hover {
   color: var(--belge-third);
 }
 #back {
-  width: 40%;
+  width: 50px;
   margin-top: 2rem;
 }
 main {
-  margin: 2rem 4rem;
+  margin: 2rem 2rem 2rem 300px;
+}
+.hidden {
+  display: none;
 }
 </style>

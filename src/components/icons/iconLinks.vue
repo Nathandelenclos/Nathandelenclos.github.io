@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import github from "../../assets/icons/icon_github.svg";
-import facebook from "../../assets/icons/icon_facebook.svg";
-import instagram from "../../assets/icons/icon_instagram.svg";
-import linkedin from "../../assets/icons/icon_linkedin.svg";
+import github from "@/assets/icons/icon_github.svg";
+import facebook from "@/assets/icons/icon_facebook.svg";
+import instagram from "@/assets/icons/icon_instagram.svg";
+import linkedin from "@/assets/icons/icon_linkedin.svg";
 export default {
   name: "iconLinks",
   props: ["link", "type"],
