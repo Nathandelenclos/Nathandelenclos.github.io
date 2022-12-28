@@ -1,11 +1,15 @@
+<script setup ></script>
+
 <script lang="ts">
 import IconLinks from "@/components/icons/iconLinks.vue";
 export default {
   name: "App",
-  components: {IconLinks},
+  components: { IconLinks },
   methods: {
     hiddenOrShow(event: any) {
-      const width = parseInt(document.getElementsByTagName('nav')[0]?.style.width)
+      const width = parseInt(
+        document.getElementsByTagName("nav")[0]?.style.width
+      );
       if (width > 150 || isNaN(width)) {
         this.hidden(event);
       } else {
@@ -38,7 +42,7 @@ export default {
       const main: HTMLElement = document.getElementsByTagName("main")[0];
       let marginLeft = 300;
       for (let elementsByTagNameKey of nav.getElementsByTagName("p")) {
-        console.log(Date.now())
+        console.log(Date.now());
         elementsByTagNameKey.className += "hidden";
       }
       for (let elementsByTagNameKey of nav.getElementsByTagName("h1")) {
