@@ -16,7 +16,7 @@ jobs:
       - name: Github Call
         run: ./getsAllInfoGithub.js ${{ secrets.GITHUBTOKEN }}
       - name: move result file
-        run: mv ./repos.json ./src/assets/repos.json
+        run: mv ./repos.json ./src/assets/
       - name: Build
         run: npm run build
       - name: Deploy 🚀
