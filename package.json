@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "npm run build && serve -s dist",
     "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
@@ -16,6 +17,7 @@
   "dependencies": {
     "node-fetch": "^2.6.7",
     "pinia": "^2.0.28",
+    "serve": "^14.1.2",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
