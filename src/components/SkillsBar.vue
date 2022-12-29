@@ -18,7 +18,7 @@ export default {
         return `width: ${this.$props.percent}%;`;
       },
     };
-  },
+  }
 };
 </script>
 

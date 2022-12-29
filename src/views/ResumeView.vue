@@ -23,11 +23,17 @@
 
 <script>
 import TimeLine from "@/components/TimeLine.vue";
-import TimeLineElement from "@/components/timeLineElement.vue";
+import TimeLineElement from "@/components/TimeLineElement.vue";
+import {useMeta} from "vue-meta";
 
 export default {
   name: "ResumeView",
   components: { TimeLineElement, TimeLine },
+  setup() {
+    useMeta({
+      title: "Resume",
+    });
+  },
   data() {
     return {
       timeline: [

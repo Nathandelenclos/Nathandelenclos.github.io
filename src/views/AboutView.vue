@@ -1,7 +1,8 @@
 <script>
-import Stats from "@/components/stats.vue";
-import SkillsBar from "@/components/skillsBar.vue";
+import StatsNumber from "@/components/StatsNumber.vue";
+import SkillsBar from "@/components/SkillsBar.vue";
 import repos from "@/assets/repos.json";
+import {useMeta} from "vue-meta";
 
 function getAge(dateString) {
   const today = new Date();
@@ -48,12 +49,16 @@ function getSkillsPercent(repos) {
     languages[lang] = (100 * languages[lang]) / sum;
     languages[lang] = languages[lang].toFixed(2);
   }
-  console.log(languages);
   return languages;
 }
 export default {
   name: "AboutView",
-  components: { SkillsBar, Stats },
+  components: { SkillsBar, StatsNumber },
+  setup() {
+    useMeta({
+      title: "About",
+    });
+  },
   data() {
     return {
       skills: getSkillsPercent(repos),
@@ -108,6 +113,7 @@ export default {
     };
   },
   mounted() {
+    console.log(document.getElementsByTagName("head")[0]);
     let time = 100;
     for (let section of document.getElementsByTagName("section")) {
       setTimeout(() => {
@@ -142,7 +148,7 @@ export default {
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
       dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
     <div class="statsFacts">
-      <stats v-for="stat in stats" :title="stat.title" :number="stat.number" />
+      <stats-number v-for="stat in stats" :title="stat.title" :number="stat.number" />
     </div>
   </section>
   <section class="skills">
@@ -151,7 +157,7 @@ export default {
       dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
     <div class="skillsBars">
       <div v-for="(lang, key) in skills" class="skillBar">
-        <skills-bar  v-bind:percent="lang" v-bind:title="key"/>
+        <skills-bar v-bind:percent="lang" v-bind:title="key"/>
       </div>
     </div>
   </section>

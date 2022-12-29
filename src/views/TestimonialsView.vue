@@ -5,11 +5,16 @@
 </template>
 
 <script>
+import { useMeta } from "vue-meta";
+
 export default {
   name: "TestimonialsView",
+  setup() {
+    useMeta({
+      title: "Testimonials",
+    });
+  },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

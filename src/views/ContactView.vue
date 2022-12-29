@@ -5,9 +5,16 @@
 </template>
 
 <script>
+import {useMeta} from "vue-meta";
+
 export default {
-  name: "ContactView"
-}
+  name: "ContactView",
+  setup() {
+    useMeta({
+      title: "Contact",
+    });
+  },
+};
 </script>
 
 <style scoped>

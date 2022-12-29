@@ -1,13 +1,13 @@
 <template>
   <div class="stats">
-    <H4>{{ number }}</H4>
+    <h4>{{ number }}</h4>
     <p>{{ title }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "stats",
+  name: "StatsNumber",
   props: ["number", "title"],
 };
 </script>

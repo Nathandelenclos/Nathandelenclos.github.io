@@ -5,8 +5,15 @@
 </template>
 
 <script>
+import {useMeta} from "vue-meta";
+
 export default {
   name: "PortfolioView",
+  setup() {
+    useMeta({
+      title: "Portfolio",
+    });
+  },
 };
 </script>
 

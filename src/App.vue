@@ -1,10 +1,15 @@
-<script setup ></script>
-
 <script lang="ts">
 import IconLinks from "@/components/icons/iconLinks.vue";
+import { useMeta } from "vue-meta";
 export default {
   name: "App",
   components: { IconLinks },
+  setup() {
+    useMeta({
+      title: "",
+      description: "Website of Nathan Delenclos",
+    });
+  },
   methods: {
     hiddenOrShow(event: any) {
       const width = parseInt(
@@ -24,7 +29,7 @@ export default {
       const interval = setInterval(() => {
         main.style.marginLeft = marginLeft + "px";
         nav.style.width = marginLeft - 50 + "px";
-        marginLeft++;
+        marginLeft += 3;
         if (marginLeft > 300) {
           clearInterval(interval);
           for (let elementsByTagNameKey of nav.getElementsByTagName("p")) {
@@ -51,7 +56,7 @@ export default {
       const interval = setInterval(() => {
         main.style.marginLeft = marginLeft + "px";
         nav.style.width = marginLeft - 50 + "px";
-        marginLeft--;
+        marginLeft -= 3;
         if (marginLeft < 150) {
           clearInterval(interval);
         }
@@ -63,6 +68,11 @@ export default {
 </script>
 
 <template>
+  <metainfo>
+    <template v-slot:title="{ content }">{{
+      content ? `${content} | Nathan Delenclos` : `Nathan Delenclos`
+    }}</template>
+  </metainfo>
   <nav>
     <img src="@/assets/me.webp" alt="profile" id="profile" />
     <h1>Nathan<br />Delenclos</h1>
@@ -135,7 +145,6 @@ nav > img {
   border-radius: 50%;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  transition: transform 0.8s;
 }
 nav > h1 {
   color: var(--belge-first);
@@ -172,6 +181,7 @@ a:hover {
 #back {
   width: 50px;
   margin-top: 2rem;
+  transition: transform 0.3s;
 }
 main {
   margin: 2rem 2rem 2rem 300px;
