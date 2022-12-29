@@ -113,7 +113,6 @@ export default {
     };
   },
   mounted() {
-    console.log(document.getElementsByTagName("head")[0]);
     let time = 100;
     for (let section of document.getElementsByTagName("section")) {
       setTimeout(() => {
@@ -205,5 +204,27 @@ export default {
   display: block;
   width: 45%;
   margin-bottom: 1rem;
+}
+@media screen and (max-width: 950px) {
+  .description {
+    flex-direction: column;
+    align-items: center;
+  }
+  .statsFacts {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .skillsBars {
+    flex-direction: column;
+  }
+  .skillBar {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .elements {
+    flex-direction: column;
+  }
 }
 </style>

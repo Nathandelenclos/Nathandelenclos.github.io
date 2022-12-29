@@ -39,7 +39,7 @@ export default {
             elementsByTagNameKey.className = "";
           }
         }
-      }, 1);
+      }, 5);
       event.srcElement.style.transform = "rotate(0deg)";
     },
     hidden(event: any) {
@@ -47,7 +47,6 @@ export default {
       const main: HTMLElement = document.getElementsByTagName("main")[0];
       let marginLeft = 300;
       for (let elementsByTagNameKey of nav.getElementsByTagName("p")) {
-        console.log(Date.now());
         elementsByTagNameKey.className += "hidden";
       }
       for (let elementsByTagNameKey of nav.getElementsByTagName("h1")) {
@@ -60,7 +59,7 @@ export default {
         if (marginLeft < 150) {
           clearInterval(interval);
         }
-      }, 1);
+      }, 5);
       event.srcElement.style.transform = "rotate(180deg)";
     },
   },
@@ -188,5 +187,27 @@ main {
 }
 .hidden {
   display: none;
+}
+@media screen and (max-width: 950px) {
+  #back {
+    display: none;
+  }
+  nav > h1 {
+    display: none;
+  }
+  nav {
+    width: 100px;
+  }
+  main {
+    margin-left: 200px;
+  }
+  .link {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .navigation > a > p {
+    display: none;
+  }
 }
 </style>

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "deploy:gcp": "./getsAllInfoGithub.js && mv ./repos.json ./src/assets && gcloud app deploy",
     "start": "serve -s dist",
     "dev": "vite",
     "build": "run-p type-check build-only",
