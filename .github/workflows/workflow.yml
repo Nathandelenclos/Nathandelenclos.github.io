@@ -21,7 +21,7 @@ jobs:
       - name: move result file
         run: mv ./repos.json ./src/assets/
       - name: Build
-        run: npm run build
+        run: npm run build-only
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
