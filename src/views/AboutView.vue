@@ -99,7 +99,7 @@ export default {
         },
         {
           title: "Email",
-          result: "nathan.delenclos@gmail.col",
+          result: "nathan.delenclos@gmail.com",
         },
         {
           title: "Phone",

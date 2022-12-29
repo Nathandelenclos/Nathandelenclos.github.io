@@ -199,7 +199,7 @@ main {
     width: 100px;
   }
   main {
-    margin-left: 200px;
+    margin-left: 150px;
   }
   .link {
     flex-direction: column;

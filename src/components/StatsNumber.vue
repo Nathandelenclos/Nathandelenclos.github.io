@@ -1,6 +1,6 @@
 <template>
   <div class="stats">
-    <h4>{{ number }}</h4>
+    <h4>0</h4>
     <p>{{ title }}</p>
   </div>
 </template>
@@ -9,6 +9,15 @@
 export default {
   name: "StatsNumber",
   props: ["number", "title"],
+  mounted() {
+    let actual = 0;
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => {
+        actual += parseInt(this.$props.number) / 20;
+        this.$el.querySelector("h4").innerHTML = Math.floor(actual);
+      }, Math.pow(i, 2.5));
+    }
+  },
 };
 </script>
 

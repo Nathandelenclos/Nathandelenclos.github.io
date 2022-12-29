@@ -3,6 +3,9 @@ on:
     branches-ignore:
       - 'ga-ignore-*'
 
+env:
+  BASE_URL: "/Nathandelenclos/"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
