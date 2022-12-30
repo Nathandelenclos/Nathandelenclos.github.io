@@ -17,6 +17,7 @@ export default {
 <style scoped>
 img {
   transition-duration: 0.2s;
+  max-width: 100%;
   box-shadow: 10px 10px 40px -18px rgba(0,0,0,0.75);
   -webkit-box-shadow: 10px 10px 40px -18px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 40px -18px rgba(0,0,0,0.75);

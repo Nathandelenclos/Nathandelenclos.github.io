@@ -88,6 +88,7 @@ export default {
 }
 .filter-element {
   display: none;
+  transition-duration: 0.2s;
 }
 .show {
   display: block;
