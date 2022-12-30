@@ -27,7 +27,7 @@ jobs:
         with:
           folder: ./dist
       - name: GASNewsletter
-        uses: Nathandelenclos/GASnewsletter-actions@1.0.1
+        uses: Nathandelenclos/GASnewsletter-actions@1.0.2
         with:
           base_url: 'https://script.google.com/macros/s/AKfycbxa6awnYOz_-13orRJPwPcu78Cf3t5EGS4yGlHkSIXuzn3hMOgASseNCBGd9D6fVSYvfg/exec'
           title: 'Project Update'
