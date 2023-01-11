@@ -6,9 +6,6 @@
 ### <div align="center">I'm [Nathan](https://nathandelenclos.github.io/Nathandelenclos/), a full-stack freelance developer 👨‍💻 </div>
 
 
-- 🔭 I’m currently working on [Jetlane / AML Decahtlon](https://www.societe.com/societe/jetlane-509174389.html)
-
-
 - 🌱 I’m currently learning VueJS and TS
 
 
