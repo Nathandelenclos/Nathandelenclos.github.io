@@ -1,7 +1,4 @@
 <div align="center">
-<img src="https://media-exp1.licdn.com/dms/image/C4D16AQF2JzDTXEQsVQ/profile-displaybackgroundimage-shrink_350_1400/0/1646219339667?e=1675296000&v=beta&t=d8KYclk4mJNOPwYG1m6XgS-8kTH1WLxIQ9CKRCsCXmk" align="center" style="width: 100%" />
-</div>  
-
 
 ### <div align="center">I'm [Nathan](https://nathandelenclos.github.io/Nathandelenclos/), a full-stack freelance developer 👨‍💻 </div>
 
@@ -30,7 +27,7 @@
 </div>
 
 </td><td valign="top" width="33%">
-
+L
 
 
 ### Backend
