@@ -1,9 +1,10 @@
+
 <div align="center">
 
 ### <div align="center">I'm [Nathan](https://nathandelenclos.github.io/Nathandelenclos/), a full-stack freelance developer 👨‍💻 </div>
 
 
-- 🌱 I’m currently learning VueJS and TS
+- 🌱 I’m Student of Epitech Technologies
 
 
 ## My Skill Set
@@ -27,7 +28,6 @@
 </div>
 
 </td><td valign="top" width="33%">
-L
 
 
 ### Backend
@@ -125,5 +125,8 @@ L
                     src="https://img.shields.io/badge/Donate-PayPal-blue.svg?style=flat-square&logo=paypal" 
                     align="center"
                 />
-            </a></div>
+            </a>
+            
+</div>
+            
 <br />
