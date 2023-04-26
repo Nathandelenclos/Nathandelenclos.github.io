@@ -22,6 +22,7 @@ export default {
           topics: el.topics,
           width: "400",
           url: el.html_url,
+          id: el.id.toString(),
         });
         return acc;
       }, []),

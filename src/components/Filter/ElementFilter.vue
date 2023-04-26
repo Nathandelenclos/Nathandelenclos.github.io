@@ -1,5 +1,7 @@
 <template>
-  <a :href="url" target="_blank"><img v-bind="$props" /></a>
+  <RouterLink :to="'/portfolio/' + id">
+    <img v-bind="$props" />
+  </RouterLink>
 </template>
 
 <script>
@@ -10,6 +12,7 @@ export default {
     src: String,
     width: String,
     url: String,
+    id: String,
   },
 };
 </script>

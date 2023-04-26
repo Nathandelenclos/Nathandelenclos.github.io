@@ -24,6 +24,8 @@ export default {
     show(event: any) {
       const nav: HTMLElement = document.getElementsByTagName("nav")[0];
       const main: HTMLElement = document.getElementsByTagName("main")[0];
+      const links = document.getElementsByClassName("link")[0];
+      links.classList.remove("column")
       let marginLeft = 150;
 
       const interval = setInterval(() => {
@@ -33,10 +35,10 @@ export default {
         if (marginLeft > 300) {
           clearInterval(interval);
           for (let elementsByTagNameKey of nav.getElementsByTagName("p")) {
-            elementsByTagNameKey.className = "";
+            elementsByTagNameKey.classList.remove("hidden");
           }
           for (let elementsByTagNameKey of nav.getElementsByTagName("h1")) {
-            elementsByTagNameKey.className = "";
+            elementsByTagNameKey.classList.remove("hidden");
           }
         }
       }, 5);
@@ -45,12 +47,15 @@ export default {
     hidden(event: any) {
       const nav: HTMLElement = document.getElementsByTagName("nav")[0];
       const main: HTMLElement = document.getElementsByTagName("main")[0];
+      const links = document.getElementsByClassName("link")[0];
+      links.classList.add("column")
       let marginLeft = 300;
+
       for (let elementsByTagNameKey of nav.getElementsByTagName("p")) {
-        elementsByTagNameKey.className += "hidden";
+        elementsByTagNameKey.classList.add("hidden");
       }
       for (let elementsByTagNameKey of nav.getElementsByTagName("h1")) {
-        elementsByTagNameKey.className += "hidden";
+        elementsByTagNameKey.classList.add("hidden");
       }
       const interval = setInterval(() => {
         main.style.marginLeft = marginLeft + "px";
@@ -106,10 +111,6 @@ export default {
         <img src="@/assets/icons/icon_wallet.svg" alt="icon user" />
         <p>Portfolio</p>
       </RouterLink>
-      <RouterLink to="/testimonials">
-        <img src="@/assets/icons/icon_comment_bubble.svg" alt="icon user" />
-        <p>Testimonials</p>
-      </RouterLink>
       <RouterLink to="/contact">
         <img src="@/assets/icons/icon_send.svg" alt="icon send" />
         <p>Contact</p>
@@ -158,14 +159,18 @@ nav > h1 {
   height: 50%;
   justify-content: space-evenly;
 }
-
+.column {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 .link {
   margin-top: 1rem;
   display: flex;
   width: 75%;
-  justify-content: space-evenly;
   color: white;
   fill: var(--belge-second);
+  justify-content: space-evenly;
 }
 a {
   display: flex;
