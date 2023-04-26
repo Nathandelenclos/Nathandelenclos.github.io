@@ -1,6 +1,7 @@
 {
   "name": "vfolio",
   "version": "0.0.0",
+  "homepage": "https://nathandelenclos.github.io/Nathandelenclos/",
   "private": true,
   "scripts": {
     "deploy:gcp": "gcloud app deploy",
