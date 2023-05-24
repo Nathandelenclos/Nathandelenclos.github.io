@@ -1,7 +1,7 @@
 
 <div align="center">
 
-### <div align="center">I'm [Nathan](https://nathandelenclos.github.io/Nathandelenclos/), a full-stack freelance developer 👨‍💻 </div>
+### <div align="center">I'm [Nathan](https://nathandelenclos.github.io/Nathandelenclos/), a full-stack developer 👨‍💻 </div>
 
 
 - 🌱 I’m Student of Epitech Technologies
