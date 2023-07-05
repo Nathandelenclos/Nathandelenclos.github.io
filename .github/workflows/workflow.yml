@@ -22,17 +22,10 @@ jobs:
         run: mv ./repos.json ./src/assets/
       - name: Build
         run: npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: copy index to 404
+        run: cp ./dist/index.html ./dist/404.html
+      - name: Deploy to GH Pages 🚀
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: ./dist
-      - name: GASNewsletter
-        uses: Nathandelenclos/GASnewsletter-actions@1.0.3
-        with:
-          base_url: 'https://script.google.com/macros/s/AKfycbxa6awnYOz_-13orRJPwPcu78Cf3t5EGS4yGlHkSIXuzn3hMOgASseNCBGd9D6fVSYvfg/exec'
-          title: 'Project Update'
-          subtitle: ${{ github.event.repository.name }}
-          img: 'https://opengraph.githubassets.com/28bc32c10307ac9a91a585056d0e2db0/Nathandelenclos/Nathandelenclos'
-          updateTitle: ${{ github.event.head_commit.message }}
-          link: 'https://nather.ey.r.appspot.com/'
-          password: ${{ secrets.NEWSLETTER_PASSWORD }}
+          github_token: ${{ secrets.GITHUBTOKEN }}
+          publish_dir: dist
